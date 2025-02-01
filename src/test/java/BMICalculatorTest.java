@@ -37,4 +37,15 @@ public class BMICalculatorTest {
         BMICalculator bmiCalcMale = new BMICalculator("John", "Doe", 180, 120.0, 'm');
         org.junit.Assert.assertEquals(2, bmiCalcMale.calculateBMICategory());
     }
+
+    @Test
+    public void testGetBMICategoryName() {
+        // Test für männlich: Erwartet "Sehr starkes Übergewicht" (Kategorie 2)
+        BMICalculator bmiCalcMale = new BMICalculator("John", "Doe", 180, 120.0, 'm');
+        org.junit.Assert.assertEquals("Sehr starkes Übergewicht", bmiCalcMale.getBMICategoryName());
+
+        // Test für weiblich: Erwartet "Übergewicht" (Kategorie 1)
+        BMICalculator bmiCalcFemale = new BMICalculator("Anna", "Musterfrau", 170, 70.0, 'w');
+        org.junit.Assert.assertEquals("Übergewicht", bmiCalcFemale.getBMICategoryName());
+    }
 }
