@@ -27,4 +27,14 @@ public class BMICalculatorTest {
         // Erwarteter Wert: ca. 37.04
         org.junit.Assert.assertEquals(37.04, bmi2, 0.01);
     }
+    @Test
+    public void testCalculateBMICategory() {
+        // Für weiblich: bodyHeight = 170, bodyWeight = 70 → BMI ca. 24.22 → Kategorie 1 (Übergewicht, da 24.0 bis 33.9)
+        BMICalculator bmiCalcFemale = new BMICalculator("Anna", "Musterfrau", 170, 70.0, 'w');
+        org.junit.Assert.assertEquals(1, bmiCalcFemale.calculateBMICategory());
+
+        // Für männlich: bodyHeight = 180, bodyWeight = 120 → BMI ca. 37.04 → Kategorie 2 (Sehr starkes Übergewicht, da >= 35.0)
+        BMICalculator bmiCalcMale = new BMICalculator("John", "Doe", 180, 120.0, 'm');
+        org.junit.Assert.assertEquals(2, bmiCalcMale.calculateBMICategory());
+    }
 }
